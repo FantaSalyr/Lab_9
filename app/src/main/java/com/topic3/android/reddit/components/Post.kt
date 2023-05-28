@@ -136,6 +136,8 @@ fun Title(text: String) {
   )
 }
 
+
+
 @Composable
 fun TextContent(text: String) {
   Text(
@@ -198,11 +200,30 @@ fun VotingAction(
   onDownVoteAction: () -> Unit
 ) {
   //TODO add your code here
+  Row(verticalAlignment = Alignment.CenterVertically) {
+    ArrowButton(onUpVoteAction, R.drawable.ic_baseline_arrow_upward_24)
+    Text(
+      text = text,
+      color = Color.Gray,
+      fontWeight = FontWeight.Medium,
+      fontSize = 12.sp)
+  }
+  ArrowButton(onUpVoteAction, R.drawable.ic_baseline_arrow_upward_24)
 }
 
 @Composable
 fun ArrowButton(onClickAction: () -> Unit, arrowResourceId: Int) {
   //TODO add your code here
+  IconButton(
+    onClick = onClickAction,
+    modifier = Modifier.size(30.dp)) {
+    Icon(
+      imageVector = ImageVector.vectorResource(arrowResourceId),
+      contentDescription = stringResource(id = R.string.upvote),
+      modifier = Modifier.size(20.dp),
+      tint = Color.Gray
+    )
+  }
 }
 
 @Composable
